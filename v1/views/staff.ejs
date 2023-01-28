@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Staff Panel | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Staff Panel | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <p id="text230">Welcome to the staff panel. Be sure to check for alerts and pending bots/reports!</p>
+                        <div id="container48" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text238"><span style="color: #5877C7">Pending Bots:</span> <%= pendingCount %></p>
+                                        <hr id="divider69">
+                                        <p id="text252">Newly Added Bots</p>
+                                        <div id="table03" class="table-wrapper">
+                                            <div class="table-inner">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Name</th>
+                                                            <th>Link</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% newbotsResults.forEach(element => { %>
+                                                            <tr>
+                                                                <td><%= element.botId %></td>
+                                                                <td><%= element.botName %></td>
+                                                                <td><a href="/bot/<%= element.botId %>">View</a></td>
+                                                            </tr>
+                                                        <% }); %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p id="text237"><span style="color: #5877C7">Pending Reports:</span> <%= reportCount %></p>
+                                        <hr id="divider64">
+                                        <p id="text251">Latest Upvotes</p>
+                                        <div id="table02" class="table-wrapper">
+                                            <div class="table-inner">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>User ID</th>
+                                                            <th>Rating</th>
+                                                            <th>Bot</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% voteResults.forEach(function(element) { %>
+															<tr>
+																<td><%= element.userId %></td>
+																<td><%= element.rating %></td>
+																<td><a href="/bot/<%= element.botId %>"><%= element.botId %></a></td>
+															</tr>
+														<% }); %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

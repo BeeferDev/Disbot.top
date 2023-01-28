@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>API Docs | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="API Docs | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+						<% if(alerts["api"].title !== "") { %>
+							<div id="container08" class="container default">
+								<div class="wrapper">
+									<div class="inner">
+										<p id="text98"><%= alerts["api"].title %></p>
+										<p id="text99"><%= alerts["api"].content %></p>
+									</div>
+								</div>
+							</div>
+						<% } %>
+                        <div id="container15" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <ul id="buttons29" class="buttons">
+                                        <li>
+                                            <a href="/api" class="button n01">API Home</a>
+                                        </li><li>
+                                            <a href="/api/docs" class="button n02">API Docs</a>
+                                        </li><li>
+                                            <a href="/api/bottokens" class="button n03">API Tokens</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container17" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text112">API Documentation</p>
+                                        <p id="text93">Looking for information our API? You have come to the right page! You can find out all information for each endpoint in this section. Thank you and happy developing!</p>
+                                        <hr id="divider27">
+                                        <p id="text114">API Link: <code>https://disbot.top/api/v2</code></p>
+                                    </div>
+                                    <div>
+                                        <p id="text115">API Endpoints</p>
+                                        <hr id="divider43">
+                                        </br>
+                                        <% apiInfo.forEach(element => { %>
+                                            <p id="text116"><%= element.endpoint_title %></p>
+                                            <p id="text117">Method: <span style="color: yellow"><%= element.endpoint_method %></span></p>
+                                            <p id="text118"><code><%= element.endpoint_url %></code></p>
+                                            <p id="text119"><%- markd.renderInline(element.endpoint_desc) %></p>
+                                            <hr id="divider08">
+                                        </br>
+                                        <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>New Bots | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="New Bots | Disbot.top" />
+		<link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+						<p id="text87">New Bots</p>
+						<hr id="divider25">
+						<% results.forEach(elementTop => {
+							let online = false;
+							let lastOnlinePlus1h = Number(elementTop.onlineStamp) + 3600000;
+							let current = Date.now();
+							if(lastOnlinePlus1h < current) { 
+								online = false;
+							} else {
+								online = true;
+							}
+							let desc = elementTop.shortDesc.substring(0, 135) + '...'; %>
+							<div id="container91" class="container columns">
+								<div class="wrapper">
+									<div class="inner">
+										<div>
+											<div id="image41" class="image">
+												<span class="frame"><img src="<%= elementTop.botIcon %>" alt="" /></span>
+											</div>
+										</div>
+										<div>
+											<p id="text301"><%= elementTop.botName %></p>
+											<p id="text302"><code><a href="/user/<%= elementTop.creatorId %>"> <span style="color: white;"><i class="bi bi-person"></i> <%= elementTop.creatorName %></span></a></code> 
+												<% if(elementTop.tagFun) { %>
+													<code><a href="/search/?q=tag:Fun">#FUN</a></code>
+												<% } if(elementTop.tagGames) { %>
+													<code><a href="/search/?q=tag:Games">#GAMES</a></code>
+												<% } if(elementTop.tagMusic) { %>
+													<code><a href="/search/?q=tag:Music">#MUSIC</a></code>
+												<% } if(elementTop.tagEco) { %>
+													<code><a href="/search/?q=tag:Eco">#ECO</a></code>
+												<% } if(elementTop.tagMod) { %>
+													<code><a href="/search/?q=tag:Mod">#MOD</a></code>
+												<% } if(elementTop.tagAutomod) { %>
+													<code><a href="/search/?q=tag:Automod">#AUTOMOD</a></code>
+												<% } if(elementTop.tagLeveling) { %>
+													<code><a href="/search/?q=tag:Leveling">#LEVELLING</a></code>
+												<% } if(elementTop.tagSocial) { %>
+													<code><a href="/search/?q=tag:Social">#SOCIAL</a></code>
+												<% } if(elementTop.tagUtility) { %>
+													<code><a href="/search/?q=tag:Utility">#UTILITY</a></code>
+												<% } %>
+											</p>
+											<hr id="divider104">
+											<p id="text302"><%= desc %></p>
+										</div>
+										<div>
+											<ul id="buttons63" class="buttons">
+												<li>
+													<a href="<%= elementTop.inviteUrl %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Invite</span></a>
+												</li><li>
+													<a href="/bot/<%= elementTop.botId %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+												</li>
+											</ul>
+											<hr id="divider105">
+											<p id="text303"><span style="color: yellow"><%= elementTop.votes %> upvotes</span> | <span style="color: #5877C7">Rating: <%= elementTop.avgRating %>/5</span></p>
+											<% if(elementTop.onlineStamp) { %>
+												<% if(online) { %>
+													<p id="text303">Status: <span style="color: #93ff3d">Online</span></p>
+												<% } else { %>
+													<p id="text303">Status: <span style="color: #dc3545">Offline</span></p>
+												<% } %>
+											<% } else { %>
+												<p id="text303">Status: Unknown</p>
+											<% } %>
+											<% if(elementTop.serverCount > 0) { %>
+												<p id="text303">Servers: <%= elementTop.serverCount %></p>
+											<% } else { %>
+												<p id="text303">Servers: Unknown</p>
+											<% } %>
+										</div>
+									</div>
+								</div>
+							</div>
+						<% }); %>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<script src="/assets/main.js"></script>
+	</body>
+</html>

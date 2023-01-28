@@ -1,0 +1,55 @@
+
+<% if(alerts["staff"].title !== "") { %>
+    <div id="container08" class="container default">
+        <div class="wrapper">
+            <div class="inner">
+                <p id="text239"><%= alerts["staff"].title %></p>
+                <p id="text240"><%= alerts["staff"].content %></p>
+            </div>
+        </div>
+    </div>
+<% } %>
+<div id="container51" class="container default">
+    <div class="wrapper">
+        <div class="inner">
+            <ul id="buttons50" class="buttons">
+                <% if(discordInfo.permission > 1) { %>
+                    <div class="dropdownStaff">
+                        <li>
+                            <a href="/staff" class="button n01">Site Settings</a>
+                        </li>
+                        <div class="dropdownStaff-content">
+                            <a href="/staff/alert/settings">Alert Settings</a>
+                            <a href="/staff/api/settings">API Settings</a>
+                            <a href="/staff/advert/settings">Advert Settings</a>
+                            <a href="/staff/partner/settings">Partner Settings</a>
+                        </div>
+                    </div>
+                    <li>
+                        <a href="/staff/permissions" class="button n01">Staff Manager</a>
+                    </li>
+                <% } %>
+                <li>
+                    <a href="/staff/auditlogs" class="button n03">Audit Logs</a>
+                </li>
+                <li>
+                    <a href="/staff/bots/pending" class="button n04">Pending Bots</a>
+                </li>
+                <li>
+                    <a href="/staff/reports/pending" class="button n05">Pending Reports</a>
+                </li>
+                <li>
+                    <a href="/staff/tickets" class="button n05">Support Tickets</a>
+                </li>
+                <% if(discordInfo.permission > 1) { %>
+                    <li>
+                        <a href="/staff/users" class="button n02">Users</a>
+                    </li>
+                    <li>
+                        <a href="/staff/bots" class="button n08">Bots</a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</div>

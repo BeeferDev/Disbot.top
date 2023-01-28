@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title><%= botInfo.botName %>'s Changelogs</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="<%= botInfo.botName %>'s Changelogs" />
+		<link rel="stylesheet" href="/assets/main.css" />
+        <style>
+            h1 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 1.5em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			h2 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 1.3em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			h3 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 1.1em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			h4 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 0.9em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			.botDescHR {
+				width: 100%;
+				border-top: solid 1px rgba(255,255,255,0.659);
+				height: 1px;
+				margin-top: -0.5px;
+			}
+			.botDescP { 
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				letter-spacing: 0rem;
+				width: 100%;
+				font-size: 0.625em;
+				line-height: 1.5;
+			}
+			.botDescli {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				letter-spacing: 0rem;
+				width: 100%;
+				line-height: 1.5;
+				font-size: 0.625em;
+				list-style-type: disc;
+			}
+			.botDescul {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				line-height: 0.75;
+				font-weight: 400;
+			}
+			.botDescul {
+				margin-left: 1.5rem;
+			}
+			.botDescol {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				line-height: 0.75;
+				font-weight: 400;
+			}
+			.botDescol {
+				margin-left: 1.5rem;
+			}
+
+			.botDescli a {
+				text-decoration: none;
+				color: #85A3FF;
+			}
+
+			.botDescli a:hover {
+				color: #4a61a8;
+			}
+			.botDescP a {
+				text-decoration: none;
+				color: #85A3FF;
+			}
+
+			.botDescP a:hover {
+				color: #4a61a8;
+			}
+        </style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <p id="text224"><%= botInfo.botName %>'s Changelogs</p>
+                            <% botChanges.forEach(element => { %>
+                                    <div id="container43" class="container columns">
+                                        <div class="wrapper">
+                                            <div class="inner">
+                                            <div>
+                                                <p id="text221">V<%= element.change_version %> - <%= element.change_title %></p>
+                                                <hr id="divider60">
+                                                <p id="text222"><%- formatD.render(element.change_details) %></p>
+                                            </div>
+                                            <div>
+                                                <p id="text219"><span style="color: grey">Date Created:</span> <%= element.change_date %></p>
+                                                <p id="text157"><span style="color: grey">Creator:</span> <%= element.userName %></p>
+                                                <% if(creators) { %>
+                                                    <hr id="divider52">
+                                                    <ul id="buttons48" class="buttons">
+                                                        <li>
+                                                            <a href="/bot/<%= botInfo.botId %>/changelogs/<%= element.id %>/remove" class="button n01"><svg><use xlink:href="/assets/icons.svg#cancel-light"></use></svg><span class="label">Delete</span></a>
+                                                        </li>
+                                                    </ul>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        <% if(creators) { %>
+							<hr id="divider63">
+                            <p id="text210">Post Creation</p>
+                            <form enctype="application/x-www-form-urlencoded" id="form10" method="post" action="/backend/bot/<%= botInfo.botId %>/changelog/add">
+                                <div class="inner">
+                                    <div class="field">
+                                        <label for="form10-title">Title</label>
+                                        <input type="text" name="changeTitle" id="form10-title" placeholder="Title" maxlength="256" required />
+                                    </div>
+                                    <div class="field">
+                                        <label for="form10-version">Version</label>
+                                        <input type="text" name="changeVersion" id="form10-version" placeholder="Version" maxlength="256" required />
+                                    </div>
+                                    <div class="field">
+                                        <label for="form10-details">Details</label>
+                                        <textarea data-gramm_editor="false" name="changeDetails" id="form10-details" placeholder="This text box supports markdown...&#10;# Heading One&#10;## Heading Two&#10;### Heading Three&#10;&#10;**Bold text**&#10;*Italic text*&#10;~~Strikethrough~~&#10;&#10;- List one&#10;- List two&#10;&#10;[URL text](URL)&#10;&#10;---&#10;^ Adds horizontal rule&#10;&#10;`Code line`" required></textarea>
+                                    </div>
+                                    <div class="actions">
+                                        <button type="submit">Submit Changes</button>
+                                    </div>
+                                </div>
+                            </form>
+                        <% } %>
+					</section>
+					<!-- ---------------------- -->
+				</div>
+			</div>
+		</div>
+		<script src="/assets/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>API Bot Tokens | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="API Bot Tokens | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+    <script>
+        function copyP() {
+			let copyText = document.getElementById("copyText") 
+			var selection = window.getSelection();
+			var range = document.createRange();
+			range.selectNodeContents(copyText);
+			selection.removeAllRanges();
+			selection.addRange(range);
+			document.execCommand('copy');
+		}
+    </script>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+						<% if(alerts["api"].title !== "") { %>
+							<div id="container08" class="container default">
+								<div class="wrapper">
+									<div class="inner">
+										<p id="text98"><%= alerts["api"].title %></p>
+										<p id="text99"><%= alerts["api"].content %></p>
+									</div>
+								</div>
+							</div>
+						<% } %>
+                        <div id="container15" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <ul id="buttons29" class="buttons">
+                                        <li>
+                                            <a href="/api" class="button n01">API Home</a>
+                                        </li><li>
+                                            <a href="/api/docs" class="button n02">API Docs</a>
+                                        </li><li>
+                                            <a href="/api/bottokens" class="button n03">API Tokens</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="container18" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text92">API Tokens</p>
+                                        <p id="text94">These authorization tokens allow you to perform API requests. Without these for the correct bot the request will not work.</p>
+                                        <hr id="divider29">
+                                        <p id="text113">Never give away or show your authorization tokens!</p>
+                                    </div>
+                                    <% if(userBots) { %>
+                                        <div>
+                                            <p id="text92">My Bots</p>
+                                            </br>
+                                            <div id="table01" class="table-wrapper">
+                                                <div class="table-inner">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Name</th>
+                                                                <th>Last Request</th>
+                                                                <th>Token</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <% userBots.forEach(function(element) { 
+                                                                let date = new Date(Number(element.onlineStamp)).toLocaleString()
+                                                                %>
+                                                                <tr>
+                                                                    <td><a href="/bot/<%= element.botId %>"><%= element.botId %></a></td>
+                                                                    <td><%= element.botName %></td>
+                                                                    <td><%= date %></td>
+                                                                    <td id="copyText" onclick="copyP()" class="spoiler"><%= element.authToken %></td>
+                                                                    <td><a href="/backend/bot/<%= element.botId %>/token/regen"><span style="color: red">Regen</span></a></td>
+                                                                </tr>
+                                                            <% }); %>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% } else { %>
+                                        <p id="text94">You don't have any listed bots.</p>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

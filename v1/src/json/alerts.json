@@ -1,0 +1,38 @@
+{
+    "home": {
+        "title": "Disbot.top Update!",
+        "content": "Our website has had a little re-design. Check and see if you can find all the changes!"
+    },
+    "bot": {
+        "title": "",
+        "content": ""
+    },
+    "vote": {
+        "title": "",
+        "content": ""
+    },
+    "addbot": {
+        "title": "Languages",
+        "content": "Remember we do not understand all languages! \r\nTry adding the bot with both English and another language if wanted."
+    },
+    "report": {
+        "title": "",
+        "content": ""
+    },
+    "advertising": {
+        "title": "",
+        "content": ""
+    },
+    "user": {
+        "title": "",
+        "content": ""
+    },
+    "staff": {
+        "title": "Disbot.top Update | Staff Panel",
+        "content": "The newest look of staff panel for Disbot.top!"
+    },
+    "api": {
+        "title": "API Tokens",
+        "content": "All tokens can now be regened. Once a regen happens the new token length will take effect. Token length changed from 35 to 25."
+    }
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Edit <%= botInfo.botName %> | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Edit <%= botInfo.botName %>" />
+		<meta property="og:title" content="Edit <%= botInfo.botName %>" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <div id="container32" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <div id="image25" class="image">
+                                            <span class="frame"><img src="<%= botInfo.botIcon %>" alt="" /></span>
+                                        </div>
+                                        <ul id="buttons40" class="buttons">
+                                            <li>
+                                                <a href="/bot/<%= botInfo.botId %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#document"></use></svg><span class="label">View Page</span></a>
+                                            </li>
+                                        </ul>
+                                        <hr id="divider53">
+                                        <p id="text151">Current Tags</p>
+                                        <ul id="buttons03" class="buttons">
+                                            <% if(botInfo.tagFun) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Fun" class="button n01">Fun</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagGames) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Games" class="button n02">Games</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagMusic) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Music" class="button n03">Music</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagEco) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Eco" class="button n04">Economy</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagMod) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Mod" class="button n05">Moderation</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagAutomod) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Automod" class="button n06">Auto-Mod</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagLeveling) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Leveling" class="button n07">Levelling</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagSocial) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Social" class="button n08">Social</a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.tagUtility) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Utility" class="button n08">Utility</a>
+                                                </li>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p id="text155"><%= botInfo.botName %> - (<%= botInfo.botId %>)</p>
+                                        <hr id="divider45">
+                                        <p id="text223"><span style="color: grey">Library:</span> <%= botInfo.library %></p>
+                                        <p id="text158"><span style="color: grey">Prefix:</span> <span style="color: #FFFFFF"><code><%= botInfo.prefix %><% if(botInfo.prefixChange) { %><span style="color: #df4e5c"> {Customizable}</span><% } %></code></span></p>
+                                        <p id="text140"><span style="color: grey">Creator:</span> <code><a href="/user/<%= botInfo.creatorId %>"><%= botInfo.creatorName %> (<%= botInfo.creatorId %>)</a></code></p>
+                                        <p id="text159"><span style="color: grey">Short Description:</span> <%= botInfo.shortDesc %></p>
+                                        <hr id="divider58">
+                                        <p id="text160">Current Socials</p>
+                                        <ul id="buttons35" class="buttons">
+                                            <% if(botInfo.supportGuild !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.supportGuild %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Discord Server</span></a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.websiteLink !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.websiteLink %>" class="button n03"><svg><use xlink:href="/assets/icons.svg#globe"></use></svg><span class="label">Website</span></a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.GithubLink !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.GithubLink %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#github"></use></svg><span class="label">GitHub</span></a>
+                                                </li>
+                                            <% }
+                                            if(botInfo.donateLink !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.donateLink %>" class="button n04"><svg><use xlink:href="/assets/icons.svg#heart"></use></svg><span class="label">Donate</span></a>
+                                                </li>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form enctype="application/x-www-form-urlencoded" id="form06" method="post" action="/backend/bot/<%= botInfo.botId %>/edit" autocomplete="off">
+                            <div class="inner">
+                                <div class="field">
+                                    <label for="form06-shorturl"><span style="color: #d33232">*</span> Short Name: (Lowercase only, no special characters or spaces. Eg: coolbot)</label>
+                                    <input type="text" name="shorturl" id="form06-shorturl" value="<%= botInfo.shorturl %>" maxlength="256" required />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-otherowners">Other Owner IDs: (comma seperated)</label>
+                                    <input type="text" name="otherowners" id="form06-otherowners" value="<%= botInfo.otherOwners %>" maxlength="256" />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-prefix"><span style="color: #d33232">*</span> Prefix</label>
+                                    <input type="text" name="prefix" id="form06-prefix" value="<%= botInfo.prefix %>" maxlength="256" required />
+                                </div>
+                                <div class="field">
+                                    <div class="checkbox">
+                                    <input type="checkbox" name="customprefix" id="form06-customprefix" value="1" <% if(botInfo.prefixChange) { %>checked <% } %> />
+                                    <label for="form06-customprefix"><span>Is your prefix customizable?</span></label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="checkbox">
+                                    <input type="checkbox" name="nsfwcontent" id="form06-nsfwcontent" value="1" <% if(botInfo.nsfwContent) { %>checked <% } %> />
+                                    <label for="form06-nsfwcontent"><span>Does you bot contain NSFW content?</span></label>
+                                    </div>
+                                </div>
+                                <% if(discordInfo.perm > 1) { %>
+                                    <div class="field">
+                                        <div class="checkbox">
+                                        <input type="checkbox" name="certified" id="form06-certified" value="1" <% if(botInfo.certified) { %>checked <% } %> />
+                                        <label for="form06-certified"><span><span style="color: #5877C7">Bot Certified?</span></span></label>
+                                        </div>
+                                    </div>
+                                <% } %>
+                                <div class="field">
+                                    <label for="form06-short-description"><span style="color: #d33232">*</span> Short Description</label>
+                                    <input type="text" name="shortdesc" id="form06-short-description" value="<%= botInfo.shortDesc %>" maxlength="256" required />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-inviteurl">Invite URL: (If not entered one will be generated)</label>
+                                    <input type="text" name="inviteurl" id="form06-inviteurl" value="<%= botInfo.inviteUrl %>" maxlength="256" />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-supportguild">Support Guild:</label>
+                                    <input type="text" name="supportguild" id="form06-supportguild" value="<%= botInfo.supportGuild %>" maxlength="256" />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-websitelink">Website Link:</label>
+                                    <input type="text" name="websitelink" id="form06-websitelink" value="<%= botInfo.websiteLink %>" maxlength="256" />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-github-repository-link">GitHub Repository Link:</label>
+                                    <input type="text" name="githublink" id="form06-github-repository-link" value="<%= botInfo.GithubLink %>" maxlength="256" />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-donate-link">Donate Link:</label>
+                                    <input type="text" name="donatelink" id="form06-donate-link" value="<%= botInfo.donateLink %>" maxlength="256" />
+                                </div>
+                                <div class="field">
+                                    <label for="form06-library"><span style="color: #d33232">*</span> Library:</label>
+                                    <select name="library" id="form06-library" required>
+										<option value="<%= botInfo.library %>"><%= botInfo.library %></option>
+										<option value="discordcr">discordcr</option>
+										<option value="Discord.Net">Discord.Net</option>
+										<option value="DSharpPlus">DSharpPlus</option>
+										<option value="Nostrum">Nostrum</option>
+										<option value="DiscordGo">DiscordGo</option>
+										<option value="Discord4J">Discord4J</option>
+										<option value="Javacord">Javacord</option>
+										<option value="JDA">JDA</option>
+										<option value="discord.io">discord.io</option>
+										<option value="discord.js">discord.js</option>
+										<option value="Discordie">Discordie</option>
+										<option value="Eris">Eris</option>
+										<option value="Discordia">Discordia</option>
+										<option value="RestCord">RestCord</option>
+										<option value="Yasmin">Yasmin</option>
+										<option value="disco">disco</option>
+										<option value="discord.py">discord.py</option>
+										<option value="discordrb">discordrb</option>
+										<option value="discord-rs">discord-rs</option>
+										<option value="serenity">serenity</option>
+										<option value="SwiftDiscord">SwiftDiscord</option>
+										<option value="Sword">Sword</option>
+										<option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="field">
+                                    <label for="form06-long-description"><span style="color: #d33232">*</span> Long Description:</label>
+                                    <textarea data-gramm_editor="false" name="longdesc" id="form06-long-description" required><%= botInfo.longDesc %></textarea>
+                                </div>
+								<div class="field">
+									<label>Select some tags</label>
+									<div class="checkbox">
+									<input type="checkbox" name="fun" id="form06-fun" value="1" <% if(botInfo.tagFun) { %>checked<% } %> />
+									<label for="form06-fun"><span>Fun</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="games" id="form06-games" value="1" <% if(botInfo.tagGames) { %>checked<% } %> />
+									<label for="form06-games"><span>Games</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="music" id="form06-music" value="1" <% if(botInfo.tagMusic) { %>checked<% } %> />
+									<label for="form06-music"><span>Music</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="economy" id="form06-economy" value="1" <% if(botInfo.tagEco) { %>checked<% } %> />
+									<label for="form06-economy"><span>Economy</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="moderation" id="form06-moderation" value="1" <% if(botInfo.tagMod) { %>checked<% } %> />
+									<label for="form06-moderation"><span>Moderation</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="automod" id="form06-automod" value="1" <% if(botInfo.tagAutomod) { %>checked<% } %>" />
+									<label for="form06-automod"><span>Automod</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="leveling" id="form06-leveling" value="1" <% if(botInfo.tagLeveling) { %>checked<% } %> />
+									<label for="form06-leveling"><span>Leveling</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="social" id="form06-social" value="1" <% if(botInfo.tagSocial) { %>checked<% } %> />
+									<label for="form06-social"><span>Social</span></label>
+									</div>
+								</div>
+								<div class="field">
+									<div class="checkbox">
+									<input type="checkbox" name="utility" id="form06-utility" value="1" <% if(botInfo.tagUtility) { %>checked<% } %> />
+									<label for="form06-utility"><span>Utility</span></label>
+									</div>
+								</div>
+                                <div class="actions">
+                                    <button type="submit">Update Bot</button>
+                                </div>
+                            </div>
+                        </form>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

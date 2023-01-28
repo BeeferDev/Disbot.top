@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Bot Certification | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Bot Certification | Disbot.top" />
+		<link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <iframe src="/assets/certification.pdf" style="width:900px; height:1110px; overflow: hidden;" frameborder="0" />
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<script src="/assets/main.js"></script>
+	</body>
+</html>

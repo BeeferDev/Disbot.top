@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Staff Permissions | Disbot.top</title>
+        <%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Staff Permissions | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container83" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text282">Staff Manager</p>
+                                    <hr id="divider98">
+                                    <div id="table11" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Username</th>
+                                                        <th>Permission</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% permUsers.forEach(element => { %>
+                                                        <% if(element.perm > 0) { %>
+                                                            <tr>
+                                                                <td><a href="/user/<%= element.userId %>"><%= element.userId %></a></td>
+                                                                <td><%= element.userName %></td>
+                                                                <td><%- conVert("noncode", element.perm) %></td>
+                                                                <td><a href="/backend/permissions/<%= element.userId %>/remove">Remove</a></td>
+                                                            </tr>
+                                                        <% } %>
+                                                    <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider99">
+                                    <form enctype="application/x-www-form-urlencoded" id="form23" method="post" action="/backend/permissions/add">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <input type="text" name="userid" id="form23-discord-id" placeholder="Discord ID" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <select name="userperm" id="form23-permission" required>
+													<option value="">&ndash;</option>
+													<option value="1">Reviewer</option>
+													<option value="2">Administrator</option>
+                                                </select>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit">Add</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

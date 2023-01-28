@@ -1,0 +1,29 @@
+{
+    "discordBotToken": "ODg2NjkyNTUzNjAzMzE3Nzcw.YT5Syg.tORz_OuZr3P6aRA5Af4bpB2oaiM",
+    "axiosDiscordApiAuthHeader": "Bot ODg2NjkyNTUzNjAzMzE3Nzcw.YT5Syg.tORz_OuZr3P6aRA5Af4bpB2oaiM",
+    "databaseUser": "root",
+    "databasePassword": "",
+    "oAuth2ClientId": "886692553603317770",
+    "oAuth2ClientToken": "cuwhztcFcecDQm5rcfUWLdkVi9sJ4t4r",
+    "twitterConsumerKey": "FXVKOw6jfIoEDuybvb5IAHcVu",
+    "twitterConsumerSecret": "LEROg6Kdhpgk4o6LwI0eKKckXytTpV8N5fOGFLX69IOynVhSvX",
+    "twitterAccessTokenKey": "1254411545846575104-moOMUB3wfGmmawJ1FUUTzOm6Dz6ijH",
+    "twitterAccessTokenSecret": "TvnJjtS1ZuhfUj3NbJzHkgEEmyp182Sr5Pav8vsPqyD0B",
+    "baseURL": "http://localhost:3000",
+
+
+    "guildId": "887213458708385792",
+    "website_logs": "918653455046950943",
+    "site_actions": "918653480669945896",
+    "disbot_user_role": "887213686341640243",
+    "reviewer_role": "887213686341640243",
+    "toprole": "887213686341640243",
+    "devrole": "887213686341640243",
+    "colors": {
+        "red": "#dc3545",
+        "green": "#93ff3d'",
+        "orange": "#ec872e",
+        "blurple": "#738adb"
+    }
+    
+}

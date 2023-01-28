@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Ticket #<%= intialTicket.id %> | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Ticket #<%= intialTicket.id %> | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <div id="container45" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text231">Ticket #<%= intialTicket.id %></p>
+                                        <hr id="divider67">
+                                        <p id="text232"><%= intialTicket.openComment %></p>
+                                    </div>
+                                    <div>
+                                        <p id="text233"><span style="color: grey">Status:</span> <%- convertS("ticketstatus", intialTicket.active)%></p>
+                                        <p id="text234"><span style="color: grey">Creator:</span> <%= intialTicket.userName %></p>
+                                        <p id="text235"><span style="color: grey">Creation Date:</span> <%= intialTicket.createDate.slice(0, 25) %></p>
+                                        <p id="text236"><span style="color: grey">Last Update:</span> <%= intialTicket.lastUpdated.slice(0, 25) %></p>
+                                        <hr id="divider68">
+                                        <ul id="buttons49" class="buttons">
+                                            <li>
+                                                <a href="/user/<%= intialTicket.userId %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#user-alt"></use></svg><span class="label"><%= intialTicket.userName %></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <% if(comments) { %>
+                            <hr id="divider66">
+                            <% comments.forEach(element => { %>
+                                <div id="container44" class="container columns">
+                                    <div class="wrapper">
+                                        <div class="inner">
+                                            <div>
+                                                <p id="text226"><i class="bi bi-person-check"></i> <%= element.userName %></p>
+                                                <hr id="divider65">
+                                                <p id="text225"><%= element.comment %></p>
+                                            </div>
+                                            <div>
+                                                <p id="text227"><span style="color: grey">Comment Date:</span> <%= element.createDate.slice(0, 25) %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        <% } %>
+
+                        <% if(intialTicket.active) { %>
+                            <hr id="divider66">
+							<form enctype="application/x-www-form-urlencoded" id="form14" method="post" action="/backend/comment/<%= intialTicket.id %>/create" autocomplete="off">
+								<div class="inner">
+									<div class="field">
+										<div class="checkbox">
+											<input type="checkbox" name="marksolved" id="form14-games" value="false" />
+											<label for="form14-games"><span>Mark Solved & Close</span></label>
+										</div>
+									</div>
+									<div class="field">
+										<label for="form14-short-description"><span style="color: #d33232">*</span> Comment:</label>
+										<textarea data-gramm_editor="false" name="details" id="form14-short-description" placeholder="" required></textarea>
+									</div>
+									<div class="actions">
+										<button type="submit">Submit Comment</button>
+									</div>
+								</div>
+							</form>
+                        <% } else { %>
+                            <div id="container44" class="container columns">
+                                <div class="wrapper">
+                                    <div class="inner">
+                                        <div>
+                                            <p id="text226">Ticket Update</p>
+                                            <hr id="divider65">
+                                            <p id="text225">This has been marked solved. No comments can be added now. If you need any help please create a new ticket!</p>
+                                        </div>
+                                        <div>
+                                            <p id="text227"><span style="color: grey">Closed Date:</span> <%= intialTicket.lastUpdated.slice(0, 25) %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+					</section>
+					<!-- ---------------------- -->
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

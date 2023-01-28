@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Alert Settings | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Alert Settings | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container74" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text268">Home Page</p>
+                                        <hr id="divider90">
+                                        <form enctype="application/x-www-form-urlencoded" id="form15" method="post" action="/backend/alert/homepage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form15-title">Title</label>
+                                                    <input type="text" name="title" id="form15-title" value="<%= alerts['home'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form15-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form15-description" placeholder="" ><%= alerts['home'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form15" />
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <p id="text269">Bot Profile Page</p>
+                                        <hr id="divider91">
+                                        <form enctype="application/x-www-form-urlencoded" id="form16" method="post" action="/backend/alert/botpage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form16-title">Title</label>
+                                                    <input type="text" name="title" id="form16-title" value="<%= alerts['bot'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form16-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form16-description" placeholder="" ><%= alerts['bot'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form16" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container74" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text270">Vote Page</p>
+                                        <hr id="divider92">
+                                        <form enctype="application/x-www-form-urlencoded" id="form17" method="post" action="/backend/alert/votepage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form17-title">Title</label>
+                                                    <input type="text" name="title" id="form17-title" value="<%= alerts['vote'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form17-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form17-description" placeholder="" ><%= alerts['vote'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form17" />
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <p id="text271">Add Bot Page</p>
+                                        <hr id="divider93">
+                                        <form enctype="application/x-www-form-urlencoded" id="form18" method="post" action="/backend/alert/addbot/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form18-title">Title</label>
+                                                    <input type="text" name="title" id="form18-title" value="<%= alerts['addbot'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form18-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form18-description" placeholder="" ><%= alerts['addbot'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form18" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container74" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text272">Report Page</p>
+                                        <hr id="divider94">
+                                        <form enctype="application/x-www-form-urlencoded" id="form19" method="post" action="/backend/alert/reportpage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form19-title">Title</label>
+                                                    <input type="text" name="title" id="form19-title" value="<%= alerts['report'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form19-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form19-description" placeholder="" ><%= alerts['report'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form19" />
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <p id="text273">Advertise Page</p>
+                                        <hr id="divider95">
+                                        <form enctype="application/x-www-form-urlencoded" id="form20" method="post" action="/backend/alert/advertpage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form20-title">Title</label>
+                                                    <input type="text" name="title" id="form20-title" value="<%= alerts['advertising'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form20-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form20-description" placeholder="" ><%= alerts['advertising'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form20" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container74" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text266">Staff Panel</p>
+                                        <hr id="divider96">
+                                        <form enctype="application/x-www-form-urlencoded" id="form21" method="post" action="/backend/alert/staffpage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form21-title">Title</label>
+                                                    <input type="text" name="title" id="form21-title" value="<%= alerts['staff'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form21-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form21-description" placeholder="" ><%= alerts['staff'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form21" />
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <p id="text275">User Page</p>
+                                        <hr id="divider97">
+                                        <form enctype="application/x-www-form-urlencoded" id="form22" method="post" action="/backend/alert/userpage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form22-title">Title</label>
+                                                    <input type="text" name="title" id="form22-title" value="<%= alerts['user'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form22-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form22-description" placeholder="" ><%= alerts['user'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form22" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container74" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <p id="text267">API Page</p>
+                                        <hr id="divider89">
+                                        <form enctype="application/x-www-form-urlencoded" id="form11" method="post" action="/backend/alert/apipage/update">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form11-title">Title</label>
+                                                    <input type="text" name="title" id="form11-title" value="<%= alerts['api'].title %>" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form11-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form11-description" placeholder="" ><%= alerts['api'].content %></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form11" />
+                                        </form>
+                                    </div>
+                                    <div>
+                                        <p id="text274">NOT USING</p>
+                                        <hr id="divider88">
+                                        <form enctype="multipart/form-data" id="form14" method="post" action="#">
+                                            <div class="inner">
+                                                <div class="field">
+                                                    <label for="form14-title">Title</label>
+                                                    <input type="text" name="title" id="form14-title" placeholder="" maxlength="256"  />
+                                                </div>
+                                                <div class="field">
+                                                    <label for="form14-description">Description</label>
+                                                    <textarea data-gramm_editor="false" name="description" id="form14-description" placeholder="" ></textarea>
+                                                </div>
+                                                <div class="actions">
+                                                    <button type="submit">Save Alert</button>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" name="id" value="form14" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

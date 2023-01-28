@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Vote <%= botInfo.botName %> | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Vote <%= botInfo.botName %> | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <% if(alerts["vote"].title !== "") { %>
+                            <div id="container27" class="container default">
+                                <div class="wrapper">
+                                    <div class="inner">
+                                        <p id="text133"><%= alerts["vote"].title %></p>
+                                        <p id="text134"><%= alerts["vote"].content %></p>
+                                    </div>
+                                </div>
+                            </div>
+						<% } %>
+
+                        <div id="container30" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <div id="image26" class="image">
+                                            <span class="frame"><img src="<%= advert.imgLink %>" alt="" /></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p id="text148"><%= advert.title %></p>
+                                        <p id="text149"><%= advert.contact %></p>
+                                        <hr id="divider49">
+                                        <ul id="buttons39" class="buttons">
+                                            <li>
+                                                <a href="<%= advert.extLink %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+                                            </li>
+                                        </ul>
+                                        <p id="text150"><u>Paid Promotion</u></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container24" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div id="image24" class="image">
+                                        <span class="frame"><img src="<%= botInfo.botIcon %>" alt="" /></span>
+                                    </div>
+                                    <% if(botInfo.certified) { %>
+                                        <p id="text129"><span style="color: #85a3ff">✔ <%= botInfo.botName %></span></p>
+                                    <% } else { %>
+                                        <p id="text129"><%= botInfo.botName %></p>
+                                    <% } %>
+                                    <ul id="buttons36" class="buttons">
+                                        <li>
+                                            <a href="/bot/<%= botInfo.botId %>/vote" class="button n01"><svg><use xlink:href="/assets/icons.svg#arrow-up-alt"></use></svg><span class="label"><%= botInfo.votes %> votes</span></a>
+                                        </li><li>
+                                            <a href="<%= botInfo.inviteUrl %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Invite</span></a>
+                                        </li>
+                                    </ul>
+                                    <hr id="divider36">
+                                    <form enctype="application/x-www-form-urlencoded" id="form07" method="post" action="/backend/vote/<%= botInfo.botId %>">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <label for="form07-what-do-you-rate-botname">What do you rate <%= botInfo.botName %></label>
+                                                <select name="rating" id="form07-what-do-you-rate-botname" required>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit">Submit Upvote</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

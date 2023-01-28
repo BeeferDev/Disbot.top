@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Staff Panel | Bots | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Staff Panel | Bots | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container60" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text250"><span style="color: #5877C7">Site Bots:</span> <%= bots.length %></p>
+                                    </br>
+                                    <form enctype="multipart/form-data" id="form22" method="post" action="" autocomplete="off">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <input type="text" name="looksearch" id="searchBox" onkeyup="findIT(2)" placeholder="Bot Name or ID | Username or ID" maxlength="256" required />
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <hr id="divider76">
+                                    <div id="table07" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Bot</th>
+                                                        <th>Creator</th>
+                                                        <th>Add Date</th>
+                                                        <th>Hidden</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <% bots.forEach(element => { %>
+                                                    <tr>
+                                                        <td><%= element.id %></td>
+                                                        <td><a href="/bot/<%= element.botId %>"><%= element.botName %> (<%= element.botId %>)</a></td>
+                                                        <td><a href="/user/<%= element.creatorId %>"><%= element.creatorName %> (<%= element.creatorId %>)</a></td>
+                                                        <td><%= element.createDate.slice(0, 25) %></td>
+                                                        <td><%- conVert("status", element.hidden) %></td>
+                                                    </tr>
+                                                <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider77">
+                                </div>
+                            </div>
+                        </div>
+					</section>
+                    <footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

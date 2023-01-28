@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Staff Panel | Users | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Staff Panel | Users | Disbot.top" />
+		<link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+						<div id="container57" class="container default">
+							<div class="wrapper">
+								<div class="inner">
+									<p id="text247"><span style="color: #5877C7">Site Users:</span> <%= users.length %></p>
+									</br>
+									<form enctype="multipart/form-data" id="form22" method="post" action="" autocomplete="off">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <input type="text" name="looksearch" id="searchBox" onkeyup="findIT(3)" placeholder="Username or ID" maxlength="256" required />
+                                            </div>
+                                        </div>
+                                    </form>
+									<hr id="divider74">
+									<div id="table06" class="table-wrapper">
+										<div class="table-inner">
+											<table>
+												<thead>
+													<tr>
+														<th>User ID</th>
+														<th>Username</th>
+														<th>Permission</th>
+														<th>Blacklisted</th>
+														<th>Post Ban</th>
+													</tr>
+												</thead>
+												<tbody>
+													<% users.forEach(element => { %>
+														<tr>
+															<td><a href="/user/<%= element.userId %>"><span style="color: #5877C7"><%= element.userId %></span></a></td>
+															<td><%= element.userName %></td>
+															<td><%- conVert("noncode", element.perm) %></td>
+															<td><%- conVert("blacklisted", element.blacklisted) %></td>
+															<td><%- conVert("pban", element.postban) %></td>
+														</tr>
+													<% }); %>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<hr id="divider75">
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+		<script src="/assets/main.js"></script>
+	</body>
+</html>

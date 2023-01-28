@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>My Tickets | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="My Tickets | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <ul id="buttons57" class="buttons">
+                            <li>
+                                <a href="/ticket/create" class="button n01"><svg><use xlink:href="/assets/icons.svg#message"></use></svg><span class="label">Create Ticket</span></a>
+                            </li>
+                        </ul>
+                        <p id="text58"><span>A ticket gets you in direct contact with our staff team and allows communication between staff and users. We may contact you through this in regards to a bot you have on our list or have submitted.</span></p>
+						<br />
+                        <div id="container71" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <% if(!userTickets) { %>
+                                        <p id="text263"><span style="color: #5877C7">You have no tickets</span></p>
+                                    <% } else { %>
+                                        <p id="text263"><span style="color: #5877C7">Open Tickets</span></p>
+                                        <hr id="divider86">
+                                        <div id="table12" class="table-wrapper">
+                                            <div class="table-inner">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Ticket ID</th>
+                                                            <th>Creator</th>
+                                                            <th>Creation Date</th>
+                                                            <th>Last Update</th>
+                                                            <th>View</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% userTickets.forEach(element => {
+                                                            if(element.active) { %>
+                                                                <tr>
+                                                                    <td><%= element.id %></td>
+                                                                    <td><%= element.userName %></td>
+                                                                    <td><%= element.createDate.slice(0, 25) %></td>
+                                                                    <td><%= element.lastUpdated.slice(0, 25) %></td>
+                                                                    <td><a href="/ticket/view/<%= element.id %>">See</a></td>
+                                                                </tr>
+                                                        <%  }
+                                                        }); %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr id="divider87">
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <hr id="divider08">
+                        <% if(userTickets) { %>
+                            <div id="container67" class="container default">
+                                <div class="wrapper">
+                                    <div class="inner">
+                                        <p id="text259"><span style="color: #5877C7">Closed Tickets</span></p>
+                                        <hr id="divider82">
+                                        <div id="table10" class="table-wrapper">
+                                            <div class="table-inner">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Ticket ID</th>
+                                                            <th>Creator</th>
+                                                            <th>Creation Date</th>
+                                                            <th>Last Update</th>
+                                                            <th>View</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% userTickets.forEach(element => {
+                                                            if(!element.active) { %>
+                                                                <tr>
+                                                                    <td><%= element.id %></td>
+                                                                    <td><%= element.userName %></td>
+                                                                    <td><%= element.createDate.slice(0, 25) %></td>
+                                                                    <td><%= element.lastUpdated.slice(0, 25) %></td>
+                                                                    <td><a href="/ticket/view/<%= element.id %>">See</a></td>
+                                                                </tr>
+                                                        <%  }
+                                                        }); %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <hr id="divider83">
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+					</section>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

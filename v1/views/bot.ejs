@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title><%= botInfo.botName %> | Disbot.top</title>
+        <%- include("partials/head.ejs") %>
+		<meta name="description" content="<%= botInfo.shortDesc %>" />
+		<meta property="og:title" content="<%= botInfo.botName %> | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+        <style>
+            h1 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 1.5em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			h2 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 1.3em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			h3 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 1.1em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			h4 {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				font-size: 0.9em;
+				line-height: 1.5;
+				font-weight: 700;
+			}
+			.botDescHR {
+				width: 100%;
+				border-top: solid 1px rgba(255,255,255,0.659);
+				height: 1px;
+				margin-top: -0.5px;
+			}
+			.botDescP { 
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				letter-spacing: 0rem;
+				width: 100%;
+				font-size: 0.625em;
+				line-height: 1.5;
+			}
+			.botDescli {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				letter-spacing: 0rem;
+				width: 100%;
+				line-height: 1.5;
+				font-size: 0.625em;
+				list-style-type: disc;
+			}
+			.botDescul {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				line-height: 0.75;
+				font-weight: 400;
+			}
+			.botDescul {
+				margin-left: 1.5rem;
+			}
+			.botDescol {
+				color: #FFFFFF;
+				font-family: 'Exo', sans-serif;
+				line-height: 0.75;
+				font-weight: 400;
+			}
+			.botDescol {
+				margin-left: 1.5rem;
+			}
+
+			.botDescli a {
+				text-decoration: none;
+				color: #85A3FF;
+			}
+
+			.botDescli a:hover {
+				color: #4a61a8;
+			}
+			.botDescP a {
+				text-decoration: none;
+				color: #85A3FF;
+			}
+
+			.botDescP a:hover {
+				color: #4a61a8;
+			}
+        </style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <% if(alerts["bot"].title !== "") { %>
+                            <div id="container08" class="container default">
+                                <div class="wrapper">
+                                    <div class="inner">
+                                        <p id="text153"><%= alerts["bot"].title %></p>
+                                        <p id="text154"><%= alerts["bot"].content %></p>
+                                    </div>
+                                </div>
+                            </div>
+						<% } %>
+                        <!-- ---------------------------Paid Promotion------------------------------- -->
+                        <div id="container26" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <div id="image23" class="image">
+                                            <span class="frame"><img src="<%= advert.imgLink %>" alt="" /></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p id="text132"><%= advert.title %></p>
+                                        <p id="text136"><%= advert.contact %></p>
+                                        <hr id="divider44">
+                                        <ul id="buttons33" class="buttons">
+                                            <li>
+                                                <a href="<%= advert.extLink %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+                                            </li>
+                                        </ul>
+                                        <p id="text131"><u>Paid Promotion</u></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ---------------------------------------------------------- -->
+                        <div id="container29" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <div id="image27" class="image">
+                                            <span class="frame"><img src="<%= botInfo.botIcon %>" alt="" /></span>
+                                        </div>
+                                        <% if(botInfo.certified) { %>
+                                            <p id="text143"><span style="color: #85a3ff"><i class="bi bi-patch-check"></i> Certified Bot</span></p>
+                                        <% } %>
+                                        <hr id="divider46">
+                                        <ul id="buttons41" class="buttons">
+                                            <li>
+                                                <a href="/bot/<%= botInfo.botId %>/vote" class="button n01"><svg><use xlink:href="/assets/icons.svg#arrow-up-alt"></use></svg><span class="label"><%= botInfo.votes %> votes</span></a>
+                                            </li>
+                                        </ul>
+                                        <ul id="buttons47" class="buttons">
+                                            <% if(botInfo.supportGuild !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.supportGuild %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Discord Server</span></a>
+                                                </li>
+                                            <% } if(botInfo.websiteLink !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.websiteLink %>" class="button n03"><svg><use xlink:href="/assets/icons.svg#globe"></use></svg><span class="label">Website</span></a>
+                                                </li>
+                                            <% } if(botInfo.GithubLink !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.GithubLink %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#github"></use></svg><span class="label">GitHub</span></a>
+                                                </li>
+                                            <% } if(botInfo.donateLink !== "null") { %>
+                                                <li>
+                                                    <a href="<%= botInfo.donateLink %>" class="button n04"><svg><use xlink:href="/assets/icons.svg#heart"></use></svg><span class="label">Donate</span></a>
+                                                </li>
+                                            <% } %>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <% if(botInfo.certified) { %>
+                                            <p id="text137"><span style="color: #85a3ff"><i class="bi bi-patch-check"></i> <%= botInfo.botName %></span></p>
+                                        <% } else { %>
+                                            <p id="text137"><%= botInfo.botName %></p>
+                                        <% } %>
+                                        <p id="text138"><%= botInfo.shortDesc %></p>
+                                        <hr id="divider47">
+                                        <ul id="buttons37" class="buttons">
+                                            <li>
+                                                <a href="<%= botInfo.inviteUrl %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Invite</span></a>
+                                            </li><li>
+                                                <a href="/bot/<%= botInfo.botId %>/report" class="button n02"><svg><use xlink:href="/assets/icons.svg#feed"></use></svg><span class="label">Report</span></a>
+                                            </li>
+                                            <% if(creator || adminType >= 1) { %>
+                                                <li>
+                                                    <a href="/bot/<%= botInfo.botId %>/edit" class="button n03"><svg><use xlink:href="/assets/icons.svg#document"></use></svg><span class="label">Edit Page</span></a>
+                                                </li>
+                                            <% } %>
+                                            <li>
+                                                <a href="/bot/<%= botInfo.botId %>/changelogs" class="button n04"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Changelogs</span></a>
+                                            </li>
+                                        </ul>
+
+                                        <% if(adminType == 1 || adminType == 2) { %>
+                                            <hr id="divider50">
+                                            <p id="text139">Staff Actions</p>
+                                            <ul id="buttons38" class="buttons">
+                                                <% if(adminType == 1 || adminType == 2) { %>
+                                                    <li>
+                                                        <a href="/backend/bot/<%= botInfo.botId %>/hide" class="button n01"><svg><use xlink:href="/assets/icons.svg#lock-alt"></use></svg><span class="label">Hide Page</span></a>
+                                                    </li>
+                                                <% } if(adminType == 2) { %>
+                                                    <li>
+                                                        <a href="/backend/bot/<%= botInfo.botId %>/delete" class="button n02"><svg><use xlink:href="/assets/icons.svg#cancel-light"></use></svg><span class="label">Delete Page</span></a>
+                                                    </li><li>
+                                                        <a href="/backend/bot/<%= botInfo.botId %>/boost/5" class="button n03"><svg><use xlink:href="/assets/icons.svg#arrow-up-alt"></use></svg><span class="label">Boost 5</span></a>
+                                                    </li><li>
+                                                        <a href="/backend/bot/<%= botInfo.botId %>/unboost/5" class="button n04"><svg><use xlink:href="/assets/icons.svg#arrow-down-alt"></use></svg><span class="label">Unboost 5</span></a>
+                                                    </li>
+                                                <% } %>
+                                            </ul>
+                                        <% } %>
+
+                                        <% if(botInfo.pending) { %>
+                                            <hr id="divider48">
+                                            <p id="text144"><span style="color: grey">Notification:</span> Pending Approval</p>
+                                        <% } if(botInfo.hidden) { %>
+                                            <p id="text144"><span style="color: grey">Page Status:</span> <span style="color: orange">Bot Hidden</p>
+                                        <% } %>
+                                    </div>
+                                    <div>
+                                        <p id="text162">Tags</p>
+                                        <ul id="buttons42" class="buttons">
+                                            <% if(botInfo.tagFun) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Fun" class="button n01">Fun</a>
+                                                </li>
+                                            <% } if(botInfo.tagGames) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Games" class="button n02">Games</a>
+                                                </li>
+                                            <% } if(botInfo.tagMusic) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Music" class="button n03">Music</a>
+                                                </li>
+                                            <% } if(botInfo.tagEco) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Eco" class="button n04">Economy</a>
+                                                </li>
+                                            <% } if(botInfo.tagMod) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Mod" class="button n05">Moderation</a>
+                                                </li>
+                                            <% } if(botInfo.tagAutomod) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Automod" class="button n06">Auto-Mod</a>
+                                                </li>
+                                            <% } if(botInfo.tagLeveling) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Leveling" class="button n07">Levelling</a>
+                                                </li>
+                                            <% } if(botInfo.tagSocial) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Social" class="button n08">Social</a>
+                                                </li>
+                                            <% } if(botInfo.tagUtility) { %>
+                                                <li>
+                                                    <a href="/search/?q=tag:Utility" class="button n08">Utility</a>
+                                                </li>
+                                            <% } %>
+                                        </ul>
+                                        <hr id="divider51">
+                                        <p id="text146">Information</p>
+                                        <p id="text156"><span style="color: grey">Rating:</span> <%= botInfo.avgRating %>/5</p>
+                                        <p id="text141"><span style="color: grey">Status:</span> 
+                                            <% let online = false;
+                                            let lastOnlinePlus1h = Number(botInfo.onlineStamp) + 3600000;
+                                            let current = Date.now();
+                                            if(lastOnlinePlus1h < current) {
+                                                online = false;
+                                            } else {
+                                                online = true;
+                                            }
+                                            if(botInfo.onlineStamp) { %>
+												<% if(online) { %><span style="color: #93ff3d">Online</span> <% } else { %>  <span style="color: #dc3545">Offline</span><% } %>
+											<% } else { %>
+                                                Unknown
+                                            <% } %>
+                                        </p>
+                                        <% if(botInfo.serverCount > 0) { %>
+                                            <p id="text145"><span style="color: grey">Servers:</span> <span style="color: #EB73FF"><%= botInfo.serverCount %></span></p>
+                                        <% } else { %>
+                                            <p id="text145"><span style="color: grey">Servers:</span> Unknown</span></p>
+                                        <% } %>
+                                        <p id="text143"><span style="color: grey">Library:</span> <%= botInfo.library %></p>
+                                        <p id="text61"><span style="color: grey">Prefix:</span> <span style="color: #FFFFFF"><code><%= botInfo.prefix %><% if(botInfo.prefixChange) { %><span style="color: #df4e5c"> {Customizable}</span><% } %></code></span></p>
+                                        <% if(botInfo.otherOwners == "null") { %>
+                                            <p id="text152"><span style="color: grey">Creator:</span> <code><a href="/user/<%= botInfo.creatorId %>"><%= botInfo.creatorName %></a></code></p>
+                                        <% } else { %>
+                                            <p id="text152"><span style="color: grey">Owners:</span> <code><a href="/user/<%= botInfo.creatorId %>"><%= botInfo.creatorName %></a>,<%- owners %></code></p>
+                                        <% } %>
+                                        <p id="text142"><span style="color: grey">Alerts:</span> <% if(botInfo.nsfwContent) { %><span style="color: #DC3545">Contains NSFW content!</span> <% } %><!--<span style="color: #ec872e"><strong>Pending report for staff</strong></span>--></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container28" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <%- longDescFormatted %>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+						<%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

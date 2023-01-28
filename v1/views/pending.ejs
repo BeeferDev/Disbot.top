@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Pending Bots | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Pending Bots | Disbot.tops" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container66" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text258"><span style="color: #5877C7">Pending Bots:</span> <%= pendingBots.length %></p>
+                                    <hr id="divider80">
+                                    <div id="table09" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Creator</th>
+                                                        <th>View</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% pendingBots.forEach(element => { %>
+                                                        <tr>
+                                                            <td><%= element.botId %></td>
+                                                            <td><%= element.botName %></td>
+                                                            <td><%= element.creatorId %> <code><%= element.creatorName %></code></td>
+                                                            <td><a href="/bot/<%= element.botId %>">See</a></td>
+                                                            <td><a href="/backend/bot/<%= element.botId %>/approve">Approve</a> | <a href="/staff/bot/deny">Deny</a></td>
+                                                        </tr>
+                                                    <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider81">
+                                </div>
+                            </div>
+                        </div>
+					</section>
+                    <footer id="footer">
+						<%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

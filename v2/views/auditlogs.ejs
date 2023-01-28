@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Audit Logs | Disbot.top</title>
+        <%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Audit Logs | Disbot.tops" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container63" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text255">Audit Logs</p>
+                                    </br>
+                                    <form enctype="multipart/form-data" id="form13" method="post" action="" autocomplete="off">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <select name="userperm" id="searchBox" onclick="findIT(1)" required>
+                                                    <option value="">&ndash;</option>
+                                                    <option value="Permission Change">Permission Change</option>
+                                                    <option value="Bot Edit">Bot Edit</option>
+                                                    <option value="Bot Added">Bot Added</option>
+                                                    <option value="Bot Vote">Bot Vote</option>
+                                                    <option value="Bot Denied">Bot Denied</option>
+                                                    <option value="Bot Approved">Bot Approved</option>
+                                                    <option value="Bot Deleted">Bot Deleted</option>
+                                                    <option value="Bot Status">Bot Status</option>
+                                                    <option value="Alert Update">Alert Update</option>
+                                                    <option value="Report Created">Report Created</option>
+                                                    <option value="Report Complete">Report Complete</option>
+                                                    <option value="Ticket Created - Website">Ticket Created via Website</option>
+                                                    <option value="Ticket Created - Discord">Ticket Created via Discord</option>
+                                                    <option value="Ticket Comment">Ticket Comment</option>
+                                                    <option value="Vote Boosted">Vote Boosted</option>
+                                                    <option value="Vote Unboosted">Vote Unboosted</option>
+                                                    <option value="Changelog Created">Changelog Created</option>
+                                                    <option value="Changelog Deleted">Changelog Deleted</option>
+                                                    <option value="Endpoint Created">Endpoint Created</option>
+                                                    <option value="Endpoint Deleted">Endpoint Deleted</option>
+                                                    <option value="User Edited">User Edited</option>
+                                                    <option value="Blacklist Add">Blacklist Add</option>
+                                                    <option value="Blacklist Remove">Blacklist Remove</option>
+                                                    <option value="Post Ban Add">Post Ban Add</option>
+                                                    <option value="Post Ban Remove">Post Ban Remove</option>
+                                                    <option value="Social Update">Social Update</option>
+                                                    <option value="Token Regeneration">Token Regeneration</option>
+                                                    <option value="Advertise Created">Advertise Created</option>
+                                                    <option value="Advertise Removed">Advertise Removed</option>
+                                                    <option value="Partner Add">Partner Add</option>
+                                                    <option value="Partner Add">Partner Remove</option>
+                                                    <option value="Unauthorized Access">Unauthorized Access</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <hr id="divider78">
+                                    <div id="table08" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <!-- <th>ID</th> -->
+                                                        <th>Action</th>
+                                                        <th>Details</th>
+                                                        <th>User</th>
+                                                        <th>Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% audits.forEach(function(element) { %>
+                                                        <tr>
+                                                            <!-- <td><%= element.id %></td> -->
+                                                            <td><%= conVert("actions", element.action_type) %></td>
+                                                            <td><%= element.action_msg %></td>
+                                                            <td><%= element.action_user %></td>
+                                                            <td><%= element.action_date %></td>
+                                                        </tr>
+                                                    <% }) %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider79">
+                                </div>
+                            </div>
+                        </div>
+					</section>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

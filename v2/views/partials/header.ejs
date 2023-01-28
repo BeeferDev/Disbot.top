@@ -1,0 +1,76 @@
+<div id="container01" class="container columns full screen">
+    <div class="wrapper">
+        <div class="inner">
+            <div>
+                <div id="image01" class="image">
+                    <a href="/"><span class="frame"><img src="/assets/images/image01.png" alt="" /></span></a>
+                </div>
+            </div>
+            <div>
+                <ul id="buttons60" class="buttons">
+                    <li>
+                        <a href="/" class="button n01">Home</a>
+                    </li>
+                    <li>
+                        <a href="/list/top" class="button n02">Top Bots</a>
+                    </li>
+                    <li>
+                        <a href="/list/certified" class="button n03">Certified Bots</a>
+                    </li>
+                    <li>
+                        <a href="/partners" class="button n04">Partners</a>
+                    </li><li>
+                        <a href="/discord" class="button n05">Join Discord</a>
+                    </li><li>
+                        <a href="/api" class="button n06">API</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul id="buttons02" class="buttons">
+                    <% if(discordInfo.loggedIn) {
+                        let notification = ""
+                        if(discordInfo.notificationCount > 0) {
+                            notification = `<span style="color: #DC3545; font-size: 1.3em !important;"><strong>${discordInfo.notificationCount}&nbsp;&nbsp;</strong></span>`
+                        }
+                        %>
+
+                        <div class="dropdown">
+                            <li>
+                                <a href="/user/<%= discordInfo.id %>" class="button n01"><%- notification %><%= discordInfo.username %>#<%= discordInfo.discriminator %></a>
+                            </li>
+                            <div class="dropdown-content">
+                                <a href="/tickets"><%- notification %>Tickets</a>
+                                <a href="/api/bottokens">My API Tokens</a>
+                                <a href="/logout">Logout</a>
+                            </div>
+                        </div>
+
+                        <li>
+                            <a href="/add" class="button n02">Add Bot</a>
+                        </li>
+
+                        <% if(discordInfo.permission > 0) { %>
+                            <div class="dropdown">
+                                <li>
+                                    <a href="/staff" class="button n03">Staff Panel</a>
+                                </li>
+                                <div class="dropdown-content">
+                                    <a href="/staff/auditlogs">Audit Logs</a>
+                                    <a href="/staff/bots/pending">Bots</a>
+                                    <a href="/staff/tickets">Tickets</a>
+                                    <a href="/staff/reports/pending">Reports</a>
+                                </div>
+                            </div>
+                        <% } %>
+
+                    <% } else { %>
+                        <li>
+                            <a href="/login" class="button n02">Login via Discord</a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

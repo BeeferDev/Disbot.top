@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Add Bot | Disbot.top</title>
+        <%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Add Bot | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <% if(alerts["addbot"].title !== "") { %>
+                            <div id="container08" class="container default">
+                                <div class="wrapper">
+                                    <div class="inner">
+                                        <p id="text239"><%= alerts["addbot"].title %></p>
+                                        <p id="text240"><%= alerts["addbot"].content %></p>
+                                    </div>
+                                </div>
+                            </div>
+						<% } %>
+                        <!-- --------------------------------------------------------------------- -->
+                        <!-- <div id="container10" class="container columns">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <div>
+                                        <div id="image15" class="image">
+                                            <span class="frame"><img src="assets/images/image15.jpg" alt="" /></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p id="text68">Sokobot</p>
+                                        <p id="text69">Sokobot is a Discord bot that lets you play Sokoban, the classic box-pushing puzzle game!...</p>
+                                        <hr id="divider05">
+                                        <ul id="buttons23" class="buttons">
+                                            <li>
+                                                <a href="https://domain.ext/path" class="button n01"><svg><use xlink:href="assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+                                            </li>
+                                        </ul>
+                                        <p id="text70"><u>Paid Promotion</u></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div id="container21" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text97">Add Your Bot!</p>
+                                    <hr id="divider33">
+                                    <p id="text109">By requesting your bot to be added to Disbot.top you agree to follow <a href="/rules">bot page/listing regulations</a></p>
+                                    <hr id="divider34">
+                                    <p id="text110"><span>Thank you for starting the bot adding process. For the safety and security of the community, we have a review process your bot will enter</span><br /><span>after you click &#39;Submit Bot&#39;. During this period of review, your bots page will be hidden from our lists but will be accessible via a direct link.</span></p>
+                                    <hr id="divider40">
+                                    <p id="text111"><span>The review process is usually fast and can take a few hours but depending on testing and our reviewers the time could take longer.</span><br /><span>We ask that you be patient during this review period.</span></p>
+                                    <hr id="divider28">
+                                    <ul id="buttons31" class="buttons">
+                                        <li>
+                                            <a href="/discord" class="button n01"><svg><use xlink:href="assets/icons.svg#discord"></use></svg><span class="label">Join our Discord if You Haven&#39;t</span></a>
+                                        </li>
+                                    </ul>
+                                    <p id="text108"><strong>We recommend being in our Discord for notifications on your bots review process or if we need to contact you!</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container22" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <form enctype="application/x-www-form-urlencoded" id="form08" method="post" action="/backend/bot/add" autocomplete="off">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <label for="form08-bot-id"><span style="color: #d33232">*</span> Bot ID:</label>
+                                                <input type="text" name="botid" id="form08-bot-id" placeholder="" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-shortname"><span style="color: #d33232">*</span> Short Name: (Lowercase only, no special characters or spaces. Eg: coolbot)</label>
+                                                <input type="text" name="shorturl" id="form08-shorturl" placeholder="" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-otherowners">Other Owner IDs: (comma seperated)</label>
+                                                <input type="text" name="otherowners" id="form08-otherowners" placeholder="" maxlength="256" />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-prefix"><span style="color: #d33232">*</span> Prefix</label>
+                                                <input type="text" name="prefix" id="form08-prefix" placeholder="" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="customprefix" id="form08-customprefix" value="1" />
+                                                <label for="form08-customprefix"><span>Is your prefix customizable?</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="nsfwcontent" id="form08-nsfwcontent" value="1" />
+                                                <label for="form08-nsfwcontent"><span>Does you bot contain NSFW content?</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-short-description"><span style="color: #d33232">*</span> Short Description</label>
+                                                <input type="text" name="shortdesc" id="form08-short-description" placeholder="" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-invite-url-if-not-entered-one-will-be-generated">Invite URL: (If not entered one will be generated)</label>
+                                                <input type="text" name="inviteurl" id="form08-invite-url-if-not-entered-one-will-be-generated" placeholder="" maxlength="256" />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-supportguild">Support Guild:</label>
+                                                <input type="text" name="supportguild" id="form08-support-guild" placeholder="" maxlength="256" />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-website-link">Website Link:</label>
+                                                <input type="text" name="websitelink" id="form08-website-link" placeholder="" maxlength="256" />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-github-repository-link">GitHub Repository Link:</label>
+                                                <input type="text" name="githublink" id="form08-github-repository-link" placeholder="" maxlength="256" />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-donate-link">Donate Link:</label>
+                                                <input type="text" name="donatelink" id="form08-donate-link" placeholder="" maxlength="256" />
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-library"><span style="color: #d33232">*</span> Library:</label>
+                                                <select name="library" id="form08-library" required>
+                                                    <option value="">&ndash;</option>
+                                                    <option value="discordcr">discordcr</option>
+                                                    <option value="Discord.Net">Discord.Net</option>
+                                                    <option value="DSharpPlus">DSharpPlus</option>
+                                                    <option value="Nostrum">Nostrum</option>
+                                                    <option value="DiscordGo">DiscordGo</option>
+                                                    <option value="Discord4J">Discord4J</option>
+                                                    <option value="Javacord">Javacord</option>
+                                                    <option value="JDA">JDA</option>
+                                                    <option value="discord.io">discord.io</option>
+                                                    <option value="discord.js">discord.js</option>
+                                                    <option value="Discordie">Discordie</option>
+                                                    <option value="Eris">Eris</option>
+                                                    <option value="Discordia">Discordia</option>
+                                                    <option value="RestCord">RestCord</option>
+                                                    <option value="Yasmin">Yasmin</option>
+                                                    <option value="disco">disco</option>
+                                                    <option value="discord.py">discord.py</option>
+                                                    <option value="discordrb">discordrb</option>
+                                                    <option value="discord-rs">discord-rs</option>
+                                                    <option value="serenity">serenity</option>
+                                                    <option value="SwiftDiscord">SwiftDiscord</option>
+                                                    <option value="Sword">Sword</option>
+                                                    <option value="Other">Other</option>
+                                                </select>
+                                            </div>
+                                            <div class="field">
+                                                <label for="form08-long-description"><span style="color: #d33232">*</span> Long Description:</label>
+                                                <textarea data-gramm_editor="false" name="longdesc" id="form08-long-description" placeholder="This text box supports markdown...&#10;# Heading One&#10;## Heading Two&#10;### Heading Three&#10;&#10;**Bold text**&#10;*Italic text*&#10;~~Strikethrough~~&#10;&#10;- List one&#10;- List two&#10;&#10;[URL text](URL)&#10;&#10;---&#10;^ Adds horizontal rule&#10;&#10;`Code line`" required></textarea>
+                                            </div>
+                                            <div class="field">
+                                                <label>Select some tags</label>
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="fun" id="form08-fun" value="1" />
+                                                <label for="form08-fun"><span>Fun</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="games" id="form08-games" value="1" />
+                                                <label for="form08-games"><span>Games</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="music" id="form08-music" value="1" />
+                                                <label for="form08-music"><span>Music</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="economy" id="form08-economy" value="1" />
+                                                <label for="form08-economy"><span>Economy</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="moderation" id="form08-moderation" value="1" />
+                                                <label for="form08-moderation"><span>Moderation</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="automod" id="form08-automod" value="1" />
+                                                <label for="form08-automod"><span>Automod</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="leveling" id="form08-leveling" value="1" />
+                                                <label for="form08-leveling"><span>Leveling</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="social" id="form08-social" value="1" />
+                                                <label for="form08-social"><span>Social</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <div class="checkbox">
+                                                <input type="checkbox" name="utility" id="form08-utility" value="1" />
+                                                <label for="form08-utility"><span>Utility</span></label>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit">Submit Bot</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "disbot",
+  "version": "1.0.0",
+  "description": "disbot.top",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@analytics/google-analytics": "^0.5.2",
+    "analytics": "^0.6.7",
+    "axios": "^0.21.1",
+    "discord.js": "^13.6.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.6",
+    "express-session": "^1.17.1",
+    "html-to-markdown": "^1.0.0",
+    "markdown-it": "^12.3.0",
+    "ms": "^2.1.3",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.4",
+    "twit": "^2.2.11",
+    "twitter": "^1.7.1"
+  }
+}

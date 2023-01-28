@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Disbot.top - Discord Bot List</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Disbot.top - Discord Bot List" />
+		<link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+						<%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+						<% if(alerts["home"].title !== "") { %>
+							<div id="container08" class="container default">
+								<div class="wrapper">
+									<div class="inner">
+										<p id="text56"><%= alerts["home"].title %></p>
+										<p id="text57"><%= alerts["home"].content %></p>
+									</div>
+								</div>
+							</div>
+						<% } %>
+						<div id="container02" class="container columns">
+							<div class="wrapper">
+								<div class="inner">
+									<div>
+										<p id="text02">Disbot.top - Discord Bot List</p>
+										<p id="text01"><em>Expand your bots potential</em></p>
+										<form enctype="application/x-www-form-urlencoded" id="form02" method="get" action="/search">
+											<div class="inner">
+												<div class="field">
+													<input type="text" name="q" id="form02-search-for-bots" placeholder="Search for bots.." maxlength="256" required />
+												</div>
+												<div class="actions">
+													<button type="submit">Search</button>
+												</div>
+											</div>
+											<input type="hidden" name="id" value="form02" />
+										</form>
+										<hr id="divider02">
+										<ul id="buttons14" class="buttons">
+											<li>
+												<a href="/list/top" class="button n01">Top Bots</a>
+											</li><li>
+												<a href="/list/top" class="button n02">Newly Added Bots</a>
+											</li><li>
+												<a href="/list/certified" class="button n03">Certified Bots</a>
+											</li>
+										</ul>
+										<ul id="buttons27" class="buttons">
+											<li>
+												<a href="/search/?q=tag:Fun" class="button n01">Fun</a>
+											</li><li>
+												<a href="/search/?q=tag:Games" class="button n02">Games</a>
+											</li><li>
+												<a href="/search/?q=tag:Music" class="button n03">Music</a>
+											</li><li>
+												<a href="/search/?q=tag:Eco" class="button n04">Economy</a>
+											</li><li>
+												<a href="/search/?q=tag:Mod" class="button n05">Moderation</a>
+											</li><li>
+												<a href="/search/?q=tag:Automod" class="button n06">Auto-Mod</a>
+											</li><li>
+												<a href="/search/?q=tag:Leveling" class="button n07">Levelling</a>
+											</li><li>
+												<a href="/search/?q=tag:Social" class="button n08">Social</a>
+											</li><li>
+												<a href="/search/?q=tag:Utility" class="button n08">Utility</a>
+											</li>
+										</ul>
+									</div>
+									<div>
+										<p id="text03"><em>Random Selection</em></p>
+										<% let onlineTheTop = false;
+										let lastOnlinePlus1hTheTop = Number(rand.onlineStamp) + 3600000;
+										let currentTheTop = Date.now();
+										if(lastOnlinePlus1hTheTop < currentTheTop) {
+											onlineTheTop = false;
+										} else {
+											onlineTheTop = true;
+										}
+										let descTheTop = rand.shortDesc.substring(0, 155) + '...'; %>
+										<div id="image03" class="image">
+											<span class="frame"><img src="<%= rand.botIcon %>" alt="" /></span>
+										</div>
+										<h1 id="text05"><%= rand.botName %></h1>
+										<p id="text31"><span style="color: yellow"><%= rand.votes %> upvotes</span> | <span style="color: #5877C7">Rating: <%= rand.avgRating %>/5 </span></p>
+										<p id="text32">
+											<% if(rand.onlineStamp) { %>
+												<% if(onlineTheTop) { %><span style="color: #93ff3d">Online</span> <% } else { %>  <span style="color: #dc3545">Offline</span><% } %> | <span style="color: #eb73ff"><%= rand.serverCount %> servers</span>
+											<% } %>
+										</p>
+										<h1 id="text04"><%= descTheTop %></h1>
+										<hr id="divider01">
+										<ul id="buttons07" class="buttons">
+											<li>
+												<a href="<%= rand.inviteUrl %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Invite</span></a>
+											</li><li>
+												<a href="/bot/<%= rand.botId %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ----------- TOP BOTS ----------- -->
+						<p id="text22">Top Bots</p>
+						<hr id="divider08">
+						<div id="container04" class="container columns">
+							<div class="wrapper">
+								<div class="inner">
+									<div>
+										<div id="image07" class="image">
+											<span class="frame"><img src="<%= adOne.imgLink %>" alt="" /></span>
+										</div>
+										<p id="text23"><%= adOne.title %></p>
+										<p id="text24"><%= adOne.contact %></p>
+										<hr id="divider09">
+										<ul id="buttons10" class="buttons">
+											<li>
+												<a href="<%= adOne.extLink %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+											</li>
+										</ul>
+										<p id="text25"><u>Paid Promotion</u></p>
+									</div>
+									<% let topCounter = 1;
+									topBots.forEach(element => {
+										let online = false;
+										let lastOnlinePlus1h = Number(element.onlineStamp) + 3600000;
+										let current = Date.now();
+										if(lastOnlinePlus1h < current) {
+											online = false;
+										} else {
+											online = true;
+										}
+										let desc = element.shortDesc.substring(0, 135) + '...';
+										if(topCounter % 4 === 0) { %>
+											</div></div></div><div id="container04" class="container columns full screen"><div class="wrapper"><div class="inner">
+										<% } %>
+										<div>
+											<div id="image08" class="image">
+												<span class="frame"><img src="<%= element.botIcon %>" alt="" /></span>
+											</div>
+											<p id="text26"><%= element.botName %></p>
+											<p id="text27"><span style="color: yellow"><%= element.votes %> upvotes</span> | <span style="color: #5877C7">Rating: <%= element.avgRating %>/5</span></p>
+											<p id="text28">
+												<% if(element.onlineStamp) { %>
+													<% if(online) { %><span style="color: #93ff3d">Online</span> <% } else { %>  <span style="color: #dc3545">Offline</span><% } %> | <span style="color: #eb73ff"><%= element.serverCount %> servers</span>
+												<% } %>
+											</p>
+											<p id="text29"><%= desc %></p>
+											<hr id="divider10">
+											<ul id="buttons11" class="buttons">
+												<li>
+													<a href="<%= element.inviteUrl %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Invite</span></a>
+												</li><li>
+													<a href="/bot/<%= element.botId %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+												</li>
+											</ul>
+										</div>
+									<%
+										topCounter++;
+									});
+									%>
+								</div>
+							</div>
+						</div>
+						<ul id="buttons21" class="buttons">
+							<li>
+								<a href="/list/top" class="button n01">EXPLORE MORE TOP BOTS</a>
+							</li>
+						</ul>
+						<!-- ----------- NEW BOTS ----------- -->
+						<p id="text87">New Bots</p>
+						<hr id="divider25">
+						<div id="container09" class="container columns">
+							<div class="wrapper">
+								<div class="inner">
+									<div>
+										<div id="image16" class="image">
+											<span class="frame"><img src="<%= adTwo.imgLink %>" alt="" /></span>
+										</div>
+										<p id="text88"><%= adTwo.title %></p>
+										<p id="text89"><%= adTwo.contact %></p>
+										<hr id="divider26">
+										<ul id="buttons28" class="buttons">
+											<li>
+												<a href="<%= adTwo.extLink %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+											</li>
+										</ul>
+										<p id="text90"><u>Paid Promotion</u></p>
+									</div>
+									<% let newCounter = 1;
+									newBots.forEach(element => {
+										let online = false;
+										let lastOnlinePlus1h = Number(element.onlineStamp) + 3600000;
+										let current = Date.now();
+										if(lastOnlinePlus1h < current) {
+											online = false;
+										} else {
+											online = true;
+										}
+										let desc = element.shortDesc.substring(0, 135) + '...';
+										if(newCounter % 4 === 0) { %>
+											</div></div></div><div id="container09" class="container columns full screen"><div class="wrapper"><div class="inner">
+										<% } %>
+										<div>
+											<div id="image17" class="image">
+												<span class="frame"><img src="<%= element.botIcon %>" alt="" /></span>
+											</div>
+											<p id="text71"><%= element.botName %></p>
+											<p id="text72"><span style="color: yellow"><%= element.votes %> upvotes</span> | <span style="color: #5877C7">Rating: <%= element.avgRating %>/5</span></p>
+											<p id="text73">
+												<% if(element.onlineStamp) { %>
+													<% if(online) { %><span style="color: #93ff3d">Online</span> <% } else { %>  <span style="color: #dc3545">Offline</span><% } %> | <span style="color: #eb73ff"><%= element.serverCount %> servers</span>
+												<% } %>
+											</p>
+											<p id="text74"><%= desc %></p>
+											<hr id="divider22">
+											<ul id="buttons24" class="buttons">
+												<li>
+													<a href="<%= element.inviteUrl %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Invite</span></a>
+												</li><li>
+													<a href="/bot/<%= element.botId %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+												</li>
+											</ul>
+										</div>
+									<%
+										newCounter++;
+									});
+									%>
+								</div>
+							</div>
+						</div>
+						<ul id="buttons22" class="buttons">
+							<li>
+								<a href="/list/new" class="button n01">EXPLORE MORE NEW BOTS</a>
+							</li>
+						</ul>
+						<!-- ----------- CERT BOTS ----------- -->
+						<p id="text21">Certified Bots</p>
+						<hr id="divider07">
+						<div id="container03" class="container columns">
+							<div class="wrapper">
+								<div class="inner">
+									<% certCounter = 0;
+									certBots.forEach(element => {
+										let online = false;
+										let lastOnlinePlus1h = Number(element.onlineStamp) + 3600000;
+										let current = Date.now();
+										if(lastOnlinePlus1h < current) {
+											online = false;
+										} else {
+											online = true;
+										}
+										let desc = element.shortDesc.substring(0, 135) + '...';
+										if(certCounter % 4 === 0) { %>
+											</div></div></div><div id="container03" class="container columns full screen"><div class="wrapper"><div class="inner">
+										<% } %>
+										<div>
+											<div id="image04" class="image">
+												<span class="frame"><img src="<%= element.botIcon %>" alt="" /></span>
+											</div>
+											<p id="text07"><%= element.botName %></p>
+											<p id="text15"><span style="color: yellow"><%= element.votes %> upvotes</span> | <span style="color: #5877C7">Rating: <%= element.avgRating %>/5</span></p>
+											<p id="text16">
+												<% if(element.onlineStamp) { %>
+													<% if(online) { %><span style="color: #93ff3d">Online</span> <% } else { %>  <span style="color: #dc3545">Offline</span><% } %> | <span style="color: #eb73ff"><%= element.serverCount %> servers</span>
+												<% } %>
+											</p>
+											<p id="text10"><%= desc %></p>
+											<hr id="divider04">
+											<ul id="buttons08" class="buttons">
+												<li>
+													<a href="<%= element.inviteUrl %>" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Invite</span></a>
+												</li><li>
+													<a href="/bot/<%= element.botId %>" class="button n02"><svg><use xlink:href="/assets/icons.svg#information"></use></svg><span class="label">Information</span></a>
+												</li>
+											</ul>
+										</div>
+									<%
+										certCounter++;
+									});
+									%>
+								</div>
+							</div>
+						</div>
+						<ul id="buttons06" class="buttons">
+							<li>
+								<a href="/list/certified" class="button n01">EXPLORE MORE CERTIFIED BOTS</a>
+							</li>
+						</ul>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+						<%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<script src="/assets/main.js"></script>
+	</body>
+</html>

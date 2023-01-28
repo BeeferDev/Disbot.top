@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Bot Denial | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Bot Denial | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head> 
+    <script>
+        function reasonTemplates() {
+            var smenureason = document.getElementById("form08-select-reason").value;
+            if(smenureason == 1) smenureason = `Unable to understand language. Please resubmit with both English and your language!\n\n**Translate:**\n(Translated to their language using google translate)`
+            if(smenureason == 2) smenureason = `Your bot goes against Discord ToS, therefore we can't accept your bot.\n\n**What is breaking Discord's TOS?**\n(command or event that is breaking TOS)`
+            if(smenureason == 3) smenureason = `Your bot goes against our ToS, therefore we can't accept your bot.\n\n**What is breaking Discord's TOS?**\n(command or event that is breaking TOS)`
+            if(smenureason == 4) smenureason = `Your bot is a copy of another GitHub respiratory. We do not accept clones.\n\n**Github**\n(link)`
+            var textarea = document.getElementById("form08-deny-reason").value = smenureason;
+        }
+    </script>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+						<form enctype="application/x-www-form-urlencoded" id="form08" method="post" action="/backend/bot/deny" autocomplete="off">
+							<div class="inner">
+                                <div>
+                                    <label for="form08-botspend"><span style="color: #d33232">*</span> Choose Bot:</label>
+                                    <select name="botspend" id="form08-botspend" required>
+                                        <option value="">&ndash;</option>
+                                        <% botInfo.forEach(ele => { %>
+                                            <% if(ele.pending == 1) { %>
+                                                <option value="<%= ele.botId %>"><%= ele.botName %></option>
+                                            <% } %>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                                <div class="field">
+									
+                                    <label for="form08-select-reason">Reason Templates:</label>
+                                    <select name="selectreason" id="form08-select-reason" onclick="reasonTemplates()">
+                                        <option value="">&ndash;</option>
+                                        <option value="1">Language Error</option>
+                                        <option value="2">Breaking Discord TOS</option>
+                                        <option value="3">Breaking our TOS</option>
+                                        <option value="4">Copy of another bot</option>
+                                    </select>
+                                </div>
+								<div class="field">
+									<label for="form08-deny-reason"><span style="color: #d33232">*</span> Deny Reason:</label>
+									<textarea data-gramm_editor="false" name="denyreason" id="form08-deny-reason" placeholder="Reason here..." required></textarea>
+								</div>
+								<div class="actions">
+									<button type="submit">Deny Bot</button>
+								</div>
+							</div>
+						</form>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

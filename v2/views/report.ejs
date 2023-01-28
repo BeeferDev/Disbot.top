@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Report <%= botInfo.botName %> | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Report <%= botInfo.botName %> | Disbot.top" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+    <script>
+        function hideBox() {
+            var a = document.getElementById("form09-reason").value;
+            if(a == "Other (must specify below).") {
+                document.getElementById("f123").style.display = "block";
+            } else {
+                document.getElementById("f123").style.display = "none";
+            }
+        }
+    </script>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <% if(alerts["report"].title !== "") { %>
+							<div id="container14" class="container default">
+								<div class="wrapper">
+									<div class="inner">
+										<p id="text98"><%= alerts["report"].title %></p>
+										<p id="text99"><%= alerts["report"].content %></p>
+									</div>
+								</div>
+							</div>
+						<% } %>
+                        <div id="container34" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text167">Report <%= botInfo.botName %></p>
+                                    <p id="text168">Any information entered in this report must be valid.</p>
+                                    <p id="text169">Invalid or false information provided in reports will be ignored or not processed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container33" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <form enctype="application/x-www-form-urlencoded" id="form09" method="post" action="/backend/bot/<%= botInfo.botId %>/report">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <label for="form09-reason">Reason</label>
+                                                <select name="reason" id="form09-reason" onclick="hideBox()" required>
+                                                    <option value="">&ndash;</option>
+                                                    <option value="The bot has been offline for an extended period of time.">The bot has been offline for an extended period of time.</option>
+                                                    <option value="The bot is spamming or doing malicious activity.">The bot is spamming or doing malicious activity.</option>
+                                                    <option value="The bot is running a copy of a fork or using a service not allowed (Eg; DBM).">The bot is running a copy of a fork or using a service not allowed (Eg; DBM).</option>
+                                                    <option value="The tags for the bot do not match the bot's features.">The tags for the bot do not match the bot's features.</option>
+                                                    <option value="Non-functioning.">Non-functioning.</option>
+                                                    <option value="NSFW content in bot (against rule #6 in bot list rules).">NSFW content in bot (against rule #6 in bot list rules).</option>
+                                                    <option value="Displaying NSFW content in listing page.">Displaying NSFW content in listing page.</option>
+                                                    <option value="Other (must specify below).">Other (must specify below).</option>
+                                                </select>
+                                            </div>
+                                            <div class="field" id="f123" style="display: none;">
+                                                <label for="form09-additional-information" id="form09-label1">Additional Information</label>
+                                                <textarea data-gramm_editor="false" name="addinfo" id="form09-additional-information" placeholder=""></textarea>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit">Submit Report</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

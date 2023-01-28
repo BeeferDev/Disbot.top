@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Pending Reports | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Pending Reports | Disbot.tops" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container70" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text262"><span style="color: #5877C7">Pending Reports:</span> <%= pendingReports.length %></p>
+                                    <hr id="divider84">
+                                    <div id="table11" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Reported Bot</th>
+                                                        <th>Reporter</th>
+                                                        <th>Reason</th>
+                                                        <th>Additional</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% pendingReports.forEach(function(element) { %>
+                                                        <tr>
+                                                            <td><a href="/bot/<%= element.botId %>"><span style="color: #5877C7"><%= element.botId %></span></a></td>
+                                                            <td><a href="/user/<%= element.creatorId %>" target="_blank"><%= element.creatorName %></a></td>
+                                                            <td><%= element.reason %></td>
+                                                            <td>
+                                                                <% if(element.addInfo == "null") { %>
+                                                                    No information
+                                                                <% } else { %>
+                                                                    <%= element.addInfo %>
+                                                                <% } %>
+                                                            </td>
+                                                            <td><a href="/bot/<%= element.botId %>">View Page</a><br><a href="/backend/report/<%= element.id %>/complete">Mark Complete</a></td>
+                                                        </tr>
+                                                    <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider85">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="container49" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text241"><span style="color: #5877C7">Total Reports:</span> <%= totalReports %></p>
+                                    <hr id="divider71">
+                                    <div id="table04" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Reported Bot</th>
+                                                        <th>Reporter</th>
+                                                        <th>Reason</th>
+                                                        <th>Additional</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% closedReports.forEach(function(element) { %>
+                                                        <tr>
+                                                            <td><a href="/bot/<%= element.botId %>"><span style="color: #5877C7"><%= element.botId %></span></a></td>
+                                                            <td><a href="/user/<%= element.creatorId %>" target="_blank"><%= element.creatorName %></a></td>
+                                                            <td><%= element.reason %></td>
+                                                            <td>
+                                                                <% if(element.addInfo == "null") { %>
+                                                                    No information
+                                                                <% } else { %>
+                                                                    <%= element.addInfo %>
+                                                                <% } %>
+                                                            </td>
+                                                            <td><a href="/bot/<%= element.botId %>">View Page</a></td>
+                                                        </tr>
+                                                    <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider70">
+                                </div>
+                            </div>
+                        </div>
+					</section>
+                    <footer id="footer">
+						<%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

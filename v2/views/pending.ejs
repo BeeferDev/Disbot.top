@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Pending Bots | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Pending Bots | Disbot.tops" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+    <style>
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            -webkit-animation-name: fadeIn; /* Fade in the background */
+            -webkit-animation-duration: 0.4s;
+            animation-name: fadeIn;
+            animation-duration: 0.4s
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: fixed;
+            bottom: 0;
+            background-color: #1d1e20;
+            width: 100%;
+            -webkit-animation-name: slideIn;
+            -webkit-animation-duration: 0.4s;
+            animation-name: slideIn;
+            animation-duration: 0.4s
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        /* #29436B #29436ba1*/
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #29436B;
+            color: white;
+        }
+
+        .modal-body {padding: 2px 16px;}
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes slideIn {
+            from {bottom: -300px; opacity: 0} 
+            to {bottom: 0; opacity: 1}
+        }
+
+        @keyframes slideIn {
+            from {bottom: -300px; opacity: 0}
+            to {bottom: 0; opacity: 1}
+        }
+
+        @-webkit-keyframes fadeIn {
+            from {opacity: 0} 
+            to {opacity: 1}
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0} 
+            to {opacity: 1}
+        }
+    </style>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container66" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text258"><span style="color: #5877C7">Pending Bots:</span> <%= pendingBots.length %></p>
+                                    <hr id="divider80">
+                                    <div id="table09" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Bot</th>
+                                                        <th>Creator</th>
+                                                        <!-- <th>Creator</th> -->
+                                                        <th>View</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% pendingBots.forEach(element => { %>
+                                                        <tr>
+                                                            <td><a href="/bot/<%= element.botId %>"><%= element.botName %> (<%= element.botId %>)</a></td>
+                                                            <td><a href="/user/<%= element.creatorId %>"><%= element.creatorName %> (<%= element.creatorId %>)</a></td>
+                                                            <td><a href="/bot/<%= element.botId %>">See</a></td>
+                                                            <td><a href="/backend/bot/<%= element.botId %>/approve">Approve</a> | <a onclick="showModal()">Deny</a></td>
+                                                        </tr>
+                                                    <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider81">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="botdenymodal" class="modal">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <span class="close">&times;</span>
+                                <h2>Bot Denial Process</h2>
+                              </div>
+                              <div class="modal-body">
+                              </br>
+                                <form enctype="application/x-www-form-urlencoded" id="form08" method="post" action="/backend/bot/deny" autocomplete="off">
+                                    <div class="inner">
+                                        <div>
+                                            <label for="form08-botspend"><span style="color: #d33232">*</span> Choose Bot:</label>
+                                            <select name="botspend" id="form08-botspend" required>
+                                                <option value="">&ndash;</option>
+                                                <% pendingBots.forEach(ele => { %>
+                                                    <option value="<%= ele.botId %>"><%= ele.botName %></option>
+                                                <% }) %>
+                                            </select>
+                                        </div>
+                                        <div class="field">
+                                            
+                                            <label for="form08-select-reason">Reason Templates:</label>
+                                            <select name="selectreason" id="form08-select-reason" onclick="reasonTemplates()">
+                                                <option value="">&ndash;</option>
+                                                <option value="1">Language Error</option>
+                                                <option value="2">Breaking Discord TOS</option>
+                                                <option value="3">Breaking our TOS</option>
+                                                <option value="4">Copy of another bot</option>
+                                            </select>
+                                        </div>
+                                        <div class="field">
+                                            <label for="form08-deny-reason"><span style="color: #d33232">*</span> Deny Reason:</label>
+                                            <textarea data-gramm_editor="false" name="denyreason" id="form08-deny-reason" placeholder="Reason here..." required></textarea>
+                                        </div>
+                                        <div class="actions">
+                                            <button type="submit">Deny Bot</button>
+                                        </div>
+                                    </br>
+                                    </div>
+                                </form>
+                              </div>
+                            </div>
+                        </div>
+					</section>
+                    <footer id="footer">
+						<%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+        <script>
+            let modal = document.getElementById('botdenymodal')
+            var span = document.getElementsByClassName("close")[0];
+            let container = document.getElementById('container87')
+            function showModal() {
+                modal.style.display = "block"
+                container.style.display = 'none'
+            }
+            span.onclick = function() {
+                modal.style.display = "none";
+                container.style.display = "block"
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                    container.style.display = "block"
+                }
+            }
+            function reasonTemplates() {
+                var smenureason = document.getElementById("form08-select-reason").value;
+                if(smenureason == 1) smenureason = `Unable to understand language. Please resubmit with both English and your language!\n\n**Translate:**\n(Translated to their language using google translate)`
+                if(smenureason == 2) smenureason = `Your bot goes against Discord ToS, therefore we can't accept your bot.\n\n**What is considered breaking Discord's TOS?**\n(command or event that is breaking TOS)`
+                if(smenureason == 3) smenureason = `Your bot goes against our ToS, therefore we can't accept your bot.\n\n**What is considered breaking our TOS?**\n(command or event that is breaking TOS)`
+                if(smenureason == 4) smenureason = `Your bot is a copy of another GitHub respiratory. We do not accept clones.\n\n**Github**\n(link)`
+                var textarea = document.getElementById("form08-deny-reason").value = smenureason;
+            }
+        </script>
+	</body>
+</html>

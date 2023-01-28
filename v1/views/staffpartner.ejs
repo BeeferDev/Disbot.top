@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Staff Panel | Advertise</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Staff Panel | Advertise" />
+		<link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container55" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text282">Current Partners</p>
+                                    <hr id="divider98">
+                                    <div id="table05" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Image Link</th>
+														<th>Link</th>
+														<th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+													<% partners.forEach(element => { %>
+														<tr>
+															<td><%= element.p_name %></a></td>
+															<td><%= element.p_image %></a></td>
+															<td><%= element.p_link %></td>
+															<td><a href="/backend/partner/<%= element.id %>/remove">Remove</a></td>
+														</tr>
+													<% }) %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+						<div id="container55" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text282">Add Partner</p>
+                                    <hr id="divider98">
+                                    <form enctype="application/x-www-form-urlencoded" id="form23" method="post" action="/backend/partner/add" autocomplete="off">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <input type="text" name="partnerName" id="form23-ad-title" placeholder="Title" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <input type="text" name="partnerDesc" id="form23-ad-desc" placeholder="Short Description" maxlength="256" required />
+                                            </div>
+											<div class="field">
+                                                <input type="text" name="partnerImage" id="form23-ad-link" placeholder="Image Link" maxlength="256" required />
+                                            </div>
+											<div class="field">
+                                                <input type="text" name="partnerLink" id="form23-ad-image" placeholder="External Link" maxlength="256" required />
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit" style="width: 50rem;">Add Partner</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+					<!-- ---------------------- -->
+					<footer id="footer">
+                        <%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+		<script src="/assets/main.js"></script>
+	</body>
+</html>

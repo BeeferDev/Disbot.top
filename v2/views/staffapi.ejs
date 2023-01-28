@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>API Settings | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+        <meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Pending Reports | Disbot.tops" />
+        <link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <%- include("partials/staffheader.ejs", { discordInfo: discordInfo, alerts: alerts }) %>
+                        <div id="container55" class="container default">
+                            <div class="wrapper">
+                                <div class="inner">
+                                    <p id="text244">API Endpoints</p>
+                                    <hr id="divider72">
+                                    <div id="table05" class="table-wrapper">
+                                        <div class="table-inner">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Title</th>
+                                                        <th>Method</th>
+                                                        <th>URL</th>
+                                                        <th>Desc</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% apiData.forEach(element => { %>
+                                                        <tr>
+                                                            <td><%= element.endpoint_title %></td>
+                                                            <td><span style="color: yellow;"><%= element.endpoint_method %></span></td>
+                                                            <td><%= element.endpoint_url %></td>
+                                                            <td><%= element.endpoint_desc %></td>
+                                                            <td><a href="/backend/endpoint/<%= element.id %>/remove">Remove</a></td>
+                                                        </tr>
+                                                    <% }) %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <hr id="divider73">
+                                    <form enctype="application/x-www-form-urlencoded" id="form12" method="post" action="/backend/endpoint/add" autocomplete="off">
+                                        <div class="inner">
+                                            <div class="field">
+                                                <input type="text" name="endTitle" id="form12-title" placeholder="Title" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <input type="text" name="endMethod" id="form12-method" placeholder="Method" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <input type="text" name="endURL" id="form12-url" placeholder="URL" maxlength="256" required />
+                                            </div>
+                                            <div class="field">
+                                                <textarea data-gramm_editor="false" name="endDesc" id="form12-desciption" placeholder="Desciption" required></textarea>
+                                            </div>
+                                            <div class="actions">
+                                                <button type="submit">Add</button>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="id" value="form12" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+					</section>
+                    <footer id="footer">
+						<%- include("partials/footer.ejs") %>
+					</footer>
+				</div>
+			</div>
+		</div>
+        <script src="/assets/main.js"></script>
+	</body>
+</html>

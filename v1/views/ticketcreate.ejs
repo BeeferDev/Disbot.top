@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Create Ticket | Disbot.top</title>
+		<%- include("partials/head.ejs") %>
+		<meta name="description" content="Expand your bots potential with disbot.top. Add your bot to our list and have it seen by heaps of people around the universe!" />
+		<meta property="og:title" content="Create Ticket | Disbot.top" />
+		<link rel="stylesheet" href="/assets/main.css" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="main">
+				<div class="inner">
+					<header id="header">
+                        <%- include("partials/header.ejs", { discordInfo: discordInfo }) %>
+					</header>
+					<!-- ---------------------- -->
+					<section id="home-section">
+                        <p id="text224">Ticket Creation</p>
+                        <p id="text58"><span>A ticket gets you in direct contact with our staff team and allows communication between staff and users. We may contact you through this in regards to a bot you have on our list or have submitted.</span></p>
+                        <ul id="buttons31" class="buttons">
+                            <li>
+                                <a href="/d" class="button n01"><svg><use xlink:href="/assets/icons.svg#discord"></use></svg><span class="label">Join our Discord!</span></a>
+                            </li>
+                        </ul>
+
+                        <form enctype="application/x-www-form-urlencoded" id="form10" method="post" action="/backend/ticket/create" autocomplete="off">
+							<div class="inner">
+								<% if(isAdmin) { %>
+									<div class="field">
+										<label for="form06-bot-id"><span style="color: #d33232">*</span> User ID:</label>
+										<input type="text" name="recipiant" id="form10-bot-id" placeholder="A user ID that will be the end user for this ticket." required />
+									</div>
+								<% } %>
+								<div class="field">
+									<label for="form14-short-description"><span style="color: #d33232">*</span> How can we help?</label>
+									<textarea data-gramm_editor="false" name="details" id="form10-short-description" placeholder="" required></textarea>
+								</div>
+							</div>
+							<br />
+                            <br />
+							<div class="actions">
+								<button type="submit">Submit Ticket</button>
+							</div>
+						</form>
+					</section>
+					<!-- ---------------------- -->
+
+				</div>
+			</div>
+		</div>
+		<script src="/assets/main.js"></script>
+	</body>
+</html>
