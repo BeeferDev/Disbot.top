@@ -1,14 +1,14 @@
 {
-    "discordBotToken": "ODg2NjkyNTUzNjAzMzE3Nzcw.YT5Syg.tORz_OuZr3P6aRA5Af4bpB2oaiM",
-    "axiosDiscordApiAuthHeader": "Bot ODg2NjkyNTUzNjAzMzE3Nzcw.YT5Syg.tORz_OuZr3P6aRA5Af4bpB2oaiM",
+    "discordBotToken": "BOT_TOKEN",
+    "axiosDiscordApiAuthHeader": "Bot BOT_TOKEN",
     "databaseUser": "root",
     "databasePassword": "",
-    "oAuth2ClientId": "886692553603317770",
-    "oAuth2ClientToken": "cuwhztcFcecDQm5rcfUWLdkVi9sJ4t4r",
-    "twitterConsumerKey": "FXVKOw6jfIoEDuybvb5IAHcVu",
-    "twitterConsumerSecret": "LEROg6Kdhpgk4o6LwI0eKKckXytTpV8N5fOGFLX69IOynVhSvX",
-    "twitterAccessTokenKey": "1254411545846575104-moOMUB3wfGmmawJ1FUUTzOm6Dz6ijH",
-    "twitterAccessTokenSecret": "TvnJjtS1ZuhfUj3NbJzHkgEEmyp182Sr5Pav8vsPqyD0B",
+    "oAuth2ClientId": "TOKEN",
+    "oAuth2ClientToken": "TOKEN",
+    "twitterConsumerKey": "TOKEN",
+    "twitterConsumerSecret": "TOKEN",
+    "twitterAccessTokenKey": "TOKEN",
+    "twitterAccessTokenSecret": "TOKEN",
     "baseURL": "http://localhost:3000",
 
 
